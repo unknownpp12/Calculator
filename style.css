@@ -3,7 +3,9 @@ button{
     height:50px;
     font-size: 20px;
     background-color: white;
+    margin:2px;
     border:1px solid black;
+    
 }
 .display{
     width:300px;
