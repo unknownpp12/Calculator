@@ -23,14 +23,14 @@ let clear= document.querySelector('.clear');
 clear.addEventListener('click',cleared)
 
 function number(e){
-    let digit= e.target.textContent;
+    let digit=e.target.textContent;
     if(oper==null){
-        if(digit=='.' && num1.includes('.'))return;
+        if(digit=='.'&& num1.includes('.'))return;
         num1+=digit;
         display.textContent=num1;
     }
     else{
-        if(digit=='.' && num2.includes('.'))return;
+        if(digit=='.'&& num2.includes('.'))return;
         num2+=digit;
         display.textContent=num2;
     }
@@ -40,7 +40,7 @@ function operator(e){
     if(oper!==null && num2!==''){
         operate();
     }
-    oper = operators;
+    oper=operators;
     display.textContent=num1+oper;
 }
 function operate(e){
@@ -50,41 +50,40 @@ function operate(e){
     else if(oper=='-')result=a-b;
     else if(oper=='*')result=a*b;
     else if(oper=='/'){
-        result=a/b;
         if(b==0){
-            result='Put something valid!';
+            result="Put something valid!";
         }
         else{
+            result=a/b;
             result=result.toFixed(4);
         }
-
     }
     else{
         result='';
     }
     display.textContent=result;
-    num1= result.toString();
+    num1=result.toString();
     num2='';
     oper=null;
-}
-function deleted(e){
-    if(oper==null){
-        num1=num1.toString().slice(0,-1);
-        display.textContent=num1;
-    }
-    else if(num2!==''){
-        num2= num2.toString().slice(0,-1);
-        display.textContent=num2;
-    }
-    else{
-        result=result.toString().slice(0,-1);
-        num1=result;
-        display.textContent=result;
-    }
 }
 function cleared(e){
     display.textContent='';
     num1='';
     num2='';
     oper=null;
+
+}
+function deleted(e){
+    if (oper==null){
+    num1=num1.toString().slice(0,-1);
+    display.textContent=num1;
+    }
+    else if(num2!==''){
+        num2=num2.toString().slice(0,-1);
+        display.textContent=num2;
+    }
+    else{
+        result=result.toString().slice(0,-1);
+        display.textContent=result;
+    }
 }
